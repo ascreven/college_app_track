@@ -4,7 +4,8 @@
 
   angular
   .module('app_track', [
-    "ui.router"
+    "ui.router",
+    'colleges'
   ])
   .config([
     "$stateProvider",
@@ -19,7 +20,15 @@
     })
     .state("collegesIndex", {
       url: "/colleges",
-      templateUrl: "app/colleges/index.html"
+      templateUrl: "app/colleges/index.html",
+      controller: "collegesController",
+      controllerAs: "collegesViewModel"
+    })
+    .state("collegesShow", {
+      url: "/colleges/:id",
+      templateUrl: "app/colleges/show.html",
+      controller: "collegesShowController",
+      controllerAs: "collegesShowViewModel"
     });
   }
 })();

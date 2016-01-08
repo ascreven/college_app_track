@@ -1,7 +1,10 @@
 (function(){
 
+'use strict';
 angular
-  .module("app_track")
+  .module("colleges", [
+    "ngResource"
+  ])
   .controller("collegesController", function(){
   this.colleges = [
     "Walk the dog",
