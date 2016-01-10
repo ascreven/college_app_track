@@ -1,0 +1,19 @@
+{
+  "name": "college_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "env.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ascreven/college_app_track.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ascreven/college_app_track/issues"
+  },
+  "homepage": "https://github.com/ascreven/college_app_track#readme"
+}

@@ -5,6 +5,7 @@
   angular
   .module('app_track', [
     "ui.router",
+    'home',
     'colleges'
   ])
   .config([
@@ -15,8 +16,10 @@
   function RouterFunction($stateProvider){
     $stateProvider
     .state("home", {
-      url: "/",
-      template: "I'm in the home template"
+      url: "/home",
+      templateUrl: "app/home/home.html",
+      controller: 'homeController',
+      controllerAs: 'homeViewModel'
     })
     .state("collegesIndex", {
       url: "/colleges",
