@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/ascreven/college_app_track/issues"
   },
-  "homepage": "https://github.com/ascreven/college_app_track#readme"
+  "homepage": "https://github.com/ascreven/college_app_track#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.3.5"
+  }
 }
