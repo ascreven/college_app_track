@@ -53,8 +53,9 @@ module.exports = function(app) {
   });
 
   // application -------------------------------------------------------------
-  app.get('/api/', function(req, res) {
-  res.sendfile('./public/index.html');
+  var path = require('path');
+  app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
   });
 
 };

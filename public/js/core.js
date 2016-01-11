@@ -2,8 +2,11 @@
   'use strict';
   angular
   .module('app_track', [
-    'schoolController',
-    'schoolService'
+    'ngRoute',
+    'appRoutes',
+    'MainCtrl',
+    'SchoolCtrl',
+    'SchoolService'
   ]);
 })();
 

@@ -1,6 +1,6 @@
-angular.module('schoolController', [])
+angular.module('MainCtrl', [])
 
-    .controller('mainController', function($scope, $http, Schools) {
+    .controller('MainController', function($scope, $http, Schools) {
         $scope.formData = {};
 
         // when landing on the page, get all schools and show them
