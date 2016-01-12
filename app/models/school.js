@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
-
-module.exports = mongoose.model('School', {
+var Schema = mongoose.Schema;
+var SchoolSchema = new Schema({
   name: String,
   url: String
-});
+})
+module.exports = mongoose.model('School', SchoolSchema);

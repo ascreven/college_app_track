@@ -1,4 +1,4 @@
-// app/routes.js
+
 
 // load the school model
 var School = require('./models/school');
@@ -8,7 +8,8 @@ module.exports = function(app) {
 
   // api ---------------------------------------------------------------------
   // get all schools
-  app.get('/api/schools', function(req, res) {
+  app.route('/api/schools')
+  .get(function(req, res) {
     School.find(function(err, schools){
       if (err)
       res.send(err)
@@ -52,10 +53,36 @@ module.exports = function(app) {
 
   });
 
+
+
   // application -------------------------------------------------------------
   var path = require('path');
   app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '../public/index.html'));
   });
 
+
+app.get('/signin', function(req, res){
+  req.flash('loginMessage');
+  res.sendFile(path.join(__dirname, '../public/views/users/signin.html'));
+});
+
+app.get('/signup', function(req, res){
+    res.sendFile(path.join(__dirname, '../public/views/users/signup.html'));
+})
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
 };
+
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}

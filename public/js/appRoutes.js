@@ -18,6 +18,16 @@
         .when('/schools', {
             templateUrl: 'views/school.html',
             controller: 'SchoolController'
+        })
+
+        .when('/signin', {
+          templateUrl: 'views/users/signin.html'
+        })
+        .when('/signup', {
+          templateUrl: 'views/users/signup.html'
+        })
+        .when('/signout', {
+          templateUrl: 'views/users/signout.html'
         });
 
     $locationProvider.html5Mode(true);
