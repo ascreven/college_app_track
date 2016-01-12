@@ -2,7 +2,7 @@
 
 // load the school model
 var School = require('./models/school');
-
+var passport= require('passport')
 // expose the routes to our app with module.exports
 module.exports = function(app) {
 
@@ -74,6 +74,12 @@ app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
 });
+
+app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/signup', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));
 };
 
 // route middleware to make sure a user is logged in

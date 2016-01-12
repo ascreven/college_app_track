@@ -44,7 +44,7 @@ app.use(methodOverride());
 
 
 // load the routes
-
+require('./config/passport')(passport);
 require('./app/routes.js')(app, passport);
 
 
