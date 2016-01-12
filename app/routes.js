@@ -58,37 +58,50 @@ module.exports = function(app) {
   // application -------------------------------------------------------------
   var path = require('path');
   app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, '../public/index.html'));
   });
 
 
-app.get('/signin', function(req, res){
-  req.flash('loginMessage');
-  res.sendFile(path.join(__dirname, '../public/views/users/signin.html'));
-});
+  app.get('/signin', function(req, res){
+    req.flash('loginMessage');
+    res.sendFile(path.join(__dirname, '../public/views/users/signin.html'));
+  });
 
-app.get('/signup', function(req, res){
+  app.get('/signup', function(req, res){
     res.sendFile(path.join(__dirname, '../public/views/users/signup.html'));
-})
-app.get('/logout', function(req, res) {
+  });
+  app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
-});
+  });
 
-app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/signup', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
-}));
+  app.post('/login', function(req, res){
+
+    var signinStrategy = passport.authenticate('local-login', {
+      successRedirect : '/profile', // redirect to the secure profile section
+      failureRedirect : '/signin', // redirect back to the signup page if there is an error
+      failureFlash : true // allow flash messages
+    })
+    return signinStrategy(req,res)
+  });
+
+  app.post('/signup', function(req, res) {
+    var signupStrategy = passport.authenticate('local-signup', {
+      successRedirect : '/profile', // redirect to the secure profile section
+      failureRedirect : '/signup', // redirect back to the signup page if there is an error
+      failureFlash : true // allow flash messages
+    })
+    return signupStrategy(req,res)
+  });
 };
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated())
+  return next();
 
-    // if they aren't redirect them to the home page
-    res.redirect('/');
+  // if they aren't redirect them to the home page
+  res.redirect('/');
 }
