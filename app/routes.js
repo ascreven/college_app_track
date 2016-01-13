@@ -17,6 +17,15 @@ module.exports = function(app) {
     });
   });
 
+  app.route('/api/schools/:school_id')
+  .get(function(req, res) {
+    School.findById(req.params.school_id, function(err, school){
+      if (err)
+      res.send(err)
+      res.json(school);
+    });
+  });
+
   // create schools and send back all schools after creation
   app.post('/api/schools', function(req, res) {
     School.create({

@@ -8,7 +8,7 @@
   ]);
 
   function FactoryFunction ($resource){
-    return $resource('/api/schools',
+    return $resource('/api/schools/:id',
      {
       // 'get': {method:'GET', isArray:true},
       // 'query': {method:'GET', isArray:true}

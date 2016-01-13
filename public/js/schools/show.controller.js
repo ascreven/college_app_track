@@ -10,7 +10,7 @@
   ]);
 
   function SchoolShowControllerFunction(SchoolFactory, $stateParams){
-    this.school = SchoolFactory.query({id: $stateParams.id});
+    this.school = SchoolFactory.get({id: $stateParams.id});
     console.log(this.school)
   }
 })();
