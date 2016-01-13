@@ -28,6 +28,10 @@
       templateUrl: 'views/schools/show.html',
       controller: 'SchoolShowController',
       controllerAs: 'SchoolShowViewModel'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'views/users/login.html'
     });
   }
 })();

@@ -4,6 +4,10 @@
 var School = require('./models/school');
 // var passport= require('passport')
 // expose the routes to our app with module.exports
+var passport = require("passport")
+
+
+
 module.exports = function(app) {
 
   // api ---------------------------------------------------------------------
@@ -59,6 +63,50 @@ module.exports = function(app) {
       });
     });
 
+    
+    // GET /signup
+    function getSignup(request, response) {
+      response.render("signup.hbs", { message: request.flash('signupMessage') });
+    }
+
+    // POST /signup
+    function postSignup(request, response) {
+      var signupStrategy = passport.authenticate('local-signup', {
+        successRedirect : '/',
+        failureRedirect : '/signup',
+        failureFlash : true
+      });
+      return signupStrategy(request, response);
+    }
+
+    // GET /login
+    function getLogin(request, response) {
+      console.log('test')
+      successRedirect : '/'
+    }
+
+    // POST /login
+    function postLogin(request, response) {
+      var loginProperty = passport.authenticate('local-login', {
+        successRedirect : '/',
+        failureRedirect : '/login',
+        failureFlash : true
+      });
+      console.log('test')
+      return loginProperty(request, response);
+    }
+
+    // GET /logout
+    function getLogout(request, response) {
+      request.logout();
+      response.redirect('/');
+    }
+
+    // Restricted page
+    function secret(request, response){
+      response.render("secret.hbs");
+    }
+
 
   });
 
@@ -69,56 +117,4 @@ module.exports = function(app) {
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
-  // GET /signup
-  // POST /signup
-  // GET /login
-  // POST /login
-  // GET /logout
-  // Restricted page
-
-
-  app.get('/signup', function(req, res){
-    res.sendFile(path.join(__dirname, '../public/views/users/signup.html'));
-  });
-  app.post('/signup', function(req, res) {
-    var signupStrategy = passport.authenticate('local-signup', {
-      successRedirect : '/profile', // redirect to the secure profile section
-      failureRedirect : '/', // redirect back to the signup page if there is an error
-      failureFlash : true // allow flash messages
-    });
-    console.log("about to return strategy");
-    return signupStrategy(req,res)
-  });
-  app.get('/signin', function(req, res){
-    req.flash('loginMessage');
-    res.sendFile(path.join(__dirname, '../public/views/users/signin.html'));
-  });
-
-
-  app.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-  });
-
-  app.post('/login', function(req, res){
-
-    var signinStrategy = passport.authenticate('local-login', {
-      successRedirect : '/profile', // redirect to the secure profile section
-      failureRedirect : '/signin', // redirect back to the signup page if there is an error
-      failureFlash : true // allow flash messages
-    })
-    return signinStrategy(req,res)
-  });
-
-
 }
-// // route middleware to make sure a user is logged in
-// function isLoggedIn(req, res, next) {
-//
-//   // if user is authenticated in the session, carry on
-//   if (req.isAuthenticated())
-//   return next();
-//
-//   // if they aren't redirect them to the home page
-//   res.redirect('/');
-// }
