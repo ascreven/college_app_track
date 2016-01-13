@@ -1,15 +1,15 @@
 var express = require("express");
 var mongoose = require('mongoose');
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-
-var database = require('./config/database');
-var port = process.env.PORT || 8080;
-var passport = require('passport');
-var flash = require('connect-flash');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
+// var morgan = require('morgan');
+// var bodyParser = require('body-parser');
+// var methodOverride = require('method-override');
+//
+// var database = require('./config/database');
+// var port = process.env.PORT || 8080;
+// var passport = require('passport');
+// var flash = require('connect-flash');
+// var cookieParser = require('cookie-parser');
+// var session = require('express-session');
 var app = express();
 
 
@@ -17,16 +17,16 @@ var app = express();
     mongoose.connect(database.url);
 
     // log every request to the console
-    app.use(morgan('dev'));
+    // app.use(morgan('dev'));
 
     app.use(cookieParser());
 
     app.use(bodyParser());
 
     // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+// app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+// app.use(passport.initialize());
+// app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
@@ -44,7 +44,7 @@ app.use(methodOverride());
 
 
 // load the routes
-require('./config/passport')(passport);
+// require('./config/passport')(passport);
 require('./app/routes.js')(app);
 
 

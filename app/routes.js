@@ -2,7 +2,7 @@
 
 // load the school model
 var School = require('./models/school');
-var passport= require('passport')
+// var passport= require('passport')
 // expose the routes to our app with module.exports
 module.exports = function(app) {
 
