@@ -14,7 +14,7 @@ var app = express();
 
 
     // load the config
-    mongoose.connect(database.url|| "mongodb://localhost/college");
+    mongoose.connect(database.url);
     // mongoose.connect(process.env.MONGOLAB_URL ;
 
     // log every request to the console
