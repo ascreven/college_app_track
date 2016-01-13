@@ -8,7 +8,7 @@ module.exports = function(app) {
 
   // api ---------------------------------------------------------------------
   // get all schools
-  app.route('/schools')
+  app.route('/api/schools')
   .get(function(req, res) {
     School.find(function(err, schools){
       if (err)

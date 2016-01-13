@@ -1,65 +1,22 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
- <meta charset="UTF-8">
-     <base href="/">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-
- <title>CollegeAppTrack</title>
-
- <!-- bootstrap -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-
-  <script src="libs/angular/angular.min.js"></script>
- <script src="libs/angular-route/angular-route.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
-<script src="js/controllers/main.js"></script>
-<script src="js/controllers/SchoolCtrl.js"></script>
-<script src="js/services/schools.js"></script>
-<script src="js/appRoutes.js"></script>
-<script src="js/core.js"></script>
-
-<!--
-<script src="script.js"></script>
- <script src="server/index.js"></script>
- <script src="server/db/seeds.js"></script>
- <script src="server/db/schema.js"></script>
- <script src="server/models/date.js"></script>
- <script src="server/models/school.js"></script>
- <script src="server/models/user.js"></script>
+<html data-ng-app="app_track">
+  <head>
+    <title>Angular</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
 
 
- <script src="app/app.js"></script>
- <script src="app/home/home.js"></script>
- <script src="app/home/home.controller.js"></script>
-<script src="app/home/college.factory.js"></script>
- <script src="app/colleges/colleges.controller.js"></script>
- <script src="app/colleges/show.controller.js"></script> -->
- <!-- <script src="script.js"></script> -->
- <!-- <script src="env.js"></script> -->
-
-
-
-
-
-</head>
-<body  data-ng-app='app_track' ng-controller="MainController">
-  <div class="page-header">
-    <h1>College App Track</h1>
-  </div>
-  <nav class="navbar navbar-default navbar-static-top">
-      <ul class="nav navbar-nav">
-      <li><a href="/">Home</a></li>
-      <li><a href="/schools">Schools</a></li>
-      <li><a href="/signin">Sign in</a></li>
-      <li><a href="/signup">Sign up</a></li>
-      <li><a href="/signout">Sign out</a></li>
-    </ul>
-  </nav>
-  <div data-ng-view></div>
-
-</body>
+    <script src="js/app.js"></script>
+    <script src="js/appRoutes.js"></script>
+    <script src="js/schools/schools.js"></script>
+    <script src="js/schools/school.factory.js"></script>
+    <script src="js/schools/index.controller.js"></script>
+    <!-- <script src="js/grumbles/grumbles.js"></script> -->
+    <!-- <script src="js/grumbles/index.controller.js"></script> -->
+  </head>
+  <body>
+    <!-- <h1><a data-ui-sref="grumbleIndex">Grumblr</a></h1> -->
+    <main data-ui-view></main>
+  </body>
 </html>

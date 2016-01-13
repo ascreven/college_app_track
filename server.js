@@ -21,7 +21,7 @@ var app = express();
 
     app.use(cookieParser());
 
-    app.use(bodyParser());
+    // app.use(bodyParser());
 
     // required for passport
 // app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret

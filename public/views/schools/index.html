@@ -1,0 +1,5 @@
+<h1>Schools</h1>
+<div data-ng-repeat="school in SchoolIndexViewModel.schools | orderBy:'-created_at'">
+  <!-- <p><a data-ui-sref="grumbleShow({id: grumble.id})">{{grumble.title}}</a></p> -->
+  <p>{{school}}</p>
+</div>
