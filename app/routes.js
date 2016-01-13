@@ -69,16 +69,32 @@ module.exports = function(app) {
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
+  // GET /signup
+  // POST /signup
+  // GET /login
+  // POST /login
+  // GET /logout
+  // Restricted page
 
 
+  app.get('/signup', function(req, res){
+    res.sendFile(path.join(__dirname, '../public/views/users/signup.html'));
+  });
+  app.post('/signup', function(req, res) {
+    var signupStrategy = passport.authenticate('local-signup', {
+      successRedirect : '/profile', // redirect to the secure profile section
+      failureRedirect : '/', // redirect back to the signup page if there is an error
+      failureFlash : true // allow flash messages
+    });
+    console.log("about to return strategy");
+    return signupStrategy(req,res)
+  });
   app.get('/signin', function(req, res){
     req.flash('loginMessage');
     res.sendFile(path.join(__dirname, '../public/views/users/signin.html'));
   });
 
-  app.get('/signup', function(req, res){
-    res.sendFile(path.join(__dirname, '../public/views/users/signup.html'));
-  });
+
   app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
@@ -94,17 +110,8 @@ module.exports = function(app) {
     return signinStrategy(req,res)
   });
 
-  app.post('/signup', function(req, res) {
-    var signupStrategy = passport.authenticate('local-signup', {
-      successRedirect : '/profile', // redirect to the secure profile section
-      failureRedirect : '/', // redirect back to the signup page if there is an error
-      failureFlash : true // allow flash messages
-    });
-    console.log("about to return strategy");
-    return signupStrategy(req,res)
-  });
-};
 
+}
 // // route middleware to make sure a user is logged in
 // function isLoggedIn(req, res, next) {
 //
