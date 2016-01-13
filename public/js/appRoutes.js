@@ -1,6 +1,10 @@
 // public/js/appRoutes.js
+
+(function(){
+
+  'use strict';
     angular
-    .module('appRoutes', [])
+    .module('appRoutes', ['ngRoute'])
     .config([
       '$routeProvider',
       '$locationProvider',
@@ -34,3 +38,4 @@
     $locationProvider.html5Mode(true);
 
 }]);
+})();

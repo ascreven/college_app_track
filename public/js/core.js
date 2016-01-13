@@ -3,7 +3,7 @@
   .module('app_track', [
     'ngRoute',
     'appRoutes',
-    'MainCtrl',
+    'MainController',
     'SchoolCtrl',
     'SchoolService'
   ]);

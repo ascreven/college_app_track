@@ -746,7 +746,7 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
              deps="angular-route.js;angular-animate.js"
              animations="true" fixBase="true">
       <file name="index.html">
-        <div ng-controller="MainCtrl as main">
+        <div ng-controller="MainController as main">
           Choose:
           <a href="Book/Moby">Moby</a> |
           <a href="Book/Moby/ch/1">Moby: Ch1</a> |
@@ -839,7 +839,7 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
 
               $locationProvider.html5Mode(true);
           }])
-          .controller('MainCtrl', ['$route', '$routeParams', '$location',
+          .controller('MainController', ['$route', '$routeParams', '$location',
             function($route, $routeParams, $location) {
               this.$route = $route;
               this.$location = $location;

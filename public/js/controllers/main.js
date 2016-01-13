@@ -1,4 +1,4 @@
-// angular.module('MainCtrl', [])
+// angular.module('MainController', [])
 //
 //     .controller('MainController', function($scope, $http, Schools) {
 //         $scope.formData = {};
@@ -43,7 +43,8 @@
 
 
 // public/core.js
-var scotchSchool = angular.module('MainCtrl', []);
+var scotchSchool = angular
+.module('MainController', []);
 
 function mainController($scope, $http) {
     $scope.formData = {};

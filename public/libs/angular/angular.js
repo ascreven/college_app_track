@@ -18239,7 +18239,7 @@ function $$CookieReaderProvider() {
  * @example
    <example name="$filter" module="filterExample">
      <file name="index.html">
-       <div ng-controller="MainCtrl">
+       <div ng-controller="MainController">
         <h3>{{ originalText }}</h3>
         <h3>{{ filteredText }}</h3>
        </div>
@@ -18247,7 +18247,7 @@ function $$CookieReaderProvider() {
 
      <file name="script.js">
       angular.module('filterExample', [])
-      .controller('MainCtrl', function($scope, $filter) {
+      .controller('MainController', function($scope, $filter) {
         $scope.originalText = 'hello';
         $scope.filteredText = $filter('uppercase')($scope.originalText);
       });
