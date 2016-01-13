@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
 var database = require('./config/database');
-var port = process.env.PORT || 8080;
+
 var passport = require('passport');
 var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
@@ -50,8 +50,8 @@ require('./app/routes.js')(app);
 
 
 // listen (start app with node server.js) ======================================
-app.listen(port);
-console.log("App listening on port " + port);
+app.listen(process.env.PORT || 8080)
+
 
 
 exports = module.exports = app;
