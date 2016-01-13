@@ -17,7 +17,8 @@
         // nerds page that will use the NerdController
         .when('/schools', {
             templateUrl: 'views/school.html',
-            controller: 'SchoolController'
+            controller: 'SchoolController',
+            controllerAs: 'SchoolViewModel'
         })
 
         .when('/signin', {

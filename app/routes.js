@@ -8,7 +8,7 @@ module.exports = function(app) {
 
   // api ---------------------------------------------------------------------
   // get all schools
-  app.route('/api/schools')
+  app.route('/schools')
   .get(function(req, res) {
     School.find(function(err, schools){
       if (err)
@@ -56,10 +56,10 @@ module.exports = function(app) {
 
 
   // application -------------------------------------------------------------
-  // var path = require('path');
-  // app.get('*', function(req, res) {
-  //   res.sendFile(path.join(__dirname, '../public/index.html'));
-  // });
+  var path = require('path');
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+  });
 
 
   app.get('/signin', function(req, res){

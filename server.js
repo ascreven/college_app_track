@@ -1,15 +1,15 @@
 var express = require("express");
 var mongoose = require('mongoose');
-// var morgan = require('morgan');
-// var bodyParser = require('body-parser');
-// var methodOverride = require('method-override');
-//
-// var database = require('./config/database');
-// var port = process.env.PORT || 8080;
-// var passport = require('passport');
-// var flash = require('connect-flash');
-// var cookieParser = require('cookie-parser');
-// var session = require('express-session');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+var database = require('./config/database');
+var port = process.env.PORT || 8080;
+var passport = require('passport');
+var flash = require('connect-flash');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var app = express();
 
 

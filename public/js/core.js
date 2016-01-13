@@ -1,5 +1,4 @@
 (function(){
-  'use strict';
   angular
   .module('app_track', [
     'ngRoute',
@@ -8,44 +7,43 @@
     'SchoolCtrl',
     'SchoolService'
   ]);
-})();
 
-//   function mainController($scope, $http){
-//     $scope.formData = {};
-//
-//     $http.get('/api/schools')
-//     .success(function(data){
-//       $scope.schools = data;
-//       console.log(data);
-//     })
-//     .error(function(data){
-//       console.log('Error:' + data);
-//     });
-//     $scope.createSchool = function(){
-//       $http.post('/api/schools', $scope.formData)
-//       .success(function(data){
-//         $scope.formData = {};
-//         $scope.schools = data;
-//         console.log(data);
-//       })
-//       .error(function(data){
-//         console.log('Error: ' + data);
-//       });
-//     };
-//
-//     $scope.deleteSchool = function(id){
-//       $http.delete('/api/schools/' + id)
-//       .success(function(data){
-//         $scope.schools = data;
-//         console.log(data);
-//       })
-//       .error(function(data){
-//         console.log('Error: ' + data);
-//       });
-//     };
-//   }
-// })();
-//
+
+  function mainController($scope, $http){
+    $scope.formData = {};
+
+    $http.get('/api/schools')
+    .success(function(data){
+      $scope.schools = data;
+      console.log(data);
+    })
+    .error(function(data){
+      console.log('Error:' + data);
+    });
+    $scope.createSchool = function(){
+      $http.post('/api/schools', $scope.formData)
+      .success(function(data){
+        $scope.formData = {};
+        $scope.schools = data;
+        console.log(data);
+      })
+      .error(function(data){
+        console.log('Error: ' + data);
+      });
+    };
+
+    $scope.deleteSchool = function(id){
+      $http.delete('/api/schools/' + id)
+      .success(function(data){
+        $scope.schools = data;
+        console.log(data);
+      })
+      .error(function(data){
+        console.log('Error: ' + data);
+      });
+    };
+  }
+})();
 //
 //
 //
