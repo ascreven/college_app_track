@@ -22,6 +22,12 @@
       templateUrl: 'views/schools/index.html',
       controller: 'SchoolIndexController',
       controllerAs: 'SchoolIndexViewModel'
+    })
+    .state('schoolShow', {
+      url: '/schools/:id',
+      templateUrl: 'views/schools/show.html',
+      controller: 'SchoolShowController',
+      controllerAs: 'SchoolShowViewModel'
     });
   }
 })();

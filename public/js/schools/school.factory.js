@@ -8,6 +8,10 @@
   ]);
 
   function FactoryFunction ($resource){
-    return $resource('/api/schools');
+    return $resource('/api/schools',
+     {
+      // 'get': {method:'GET', isArray:true},
+      // 'query': {method:'GET', isArray:true}
+    });
     }
 })();
