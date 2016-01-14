@@ -2,6 +2,7 @@
 
 // load the school model
 var School = require('./models/school');
+var Date = require('./models/date');
 // var passport= require('passport')
 // expose the routes to our app with module.exports
 var passport = require("passport")
@@ -63,7 +64,7 @@ module.exports = function(app) {
       });
     });
 
-    
+
     // GET /signup
     function getSignup(request, response) {
       response.render("signup.hbs", { message: request.flash('signupMessage') });

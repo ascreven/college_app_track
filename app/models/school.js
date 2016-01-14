@@ -1,8 +1,5 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var SchoolSchema = new Schema({
-  name: String,
-  photo: String,
-  url: String
-});
-module.exports = mongoose.model('School', SchoolSchema);
+require("../db/schema")
+var mongoose = require('mongoose')
+
+var SchoolModel = mongoose.model("School")
+module.exports = SchoolModel
