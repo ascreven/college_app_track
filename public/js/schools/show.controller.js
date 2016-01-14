@@ -6,11 +6,12 @@
   .controller('SchoolShowController', [
     'SchoolFactory',
     '$stateParams',
+    '$scope',
     SchoolShowControllerFunction
   ]);
 
-  function SchoolShowControllerFunction(SchoolFactory, $stateParams){
+  function SchoolShowControllerFunction(SchoolFactory, $stateParams, $scope){
     this.school = SchoolFactory.get({id: $stateParams.id});
-    console.log(this.school)
+    console.log($scope)
   }
 })();
