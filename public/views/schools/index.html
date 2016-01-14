@@ -1,20 +1,21 @@
 <h1>Schools</h1>
-<div class='container'>
-  <div class='row'>
-<!-- <div class="col-sm-6"> -->
+<div class='container center-block'>
+  <!-- <div class='row'> -->
+
 <!-- <div class="card-group"> -->
 <div data-ng-repeat="school in SchoolIndexViewModel.schools | orderBy:'-created_at'">
   <!-- <p><a data-ui-sref="schoolShow({id: school._id})">{{school.name}}</a></p> -->
-  <div class="card">
+  <div class="card center-block col-sm-4">
 
     <div class="card-block">
-<img class="card-img-top" data-ng-src="{{school.photo}}" alt="Card image cap">
-      <h4 class="card-title">{{school.name}}</h4>
+<h4 class='card-title'><a data-ui-sref="schoolShow({id: school._id})">{{school.name}}</a></h4>
+<img class="card-img-top center-block" data-ng-src="{{school.photo}}" alt="Card image cap">
+
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
 </div>
 </div>
-</div>
+<!-- </div> -->
 <!-- </div> -->
