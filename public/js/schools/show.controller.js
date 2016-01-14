@@ -13,5 +13,6 @@
   function SchoolShowControllerFunction(SchoolFactory, $stateParams, $scope){
     this.school = SchoolFactory.get({id: $stateParams.id});
     console.log($scope)
-  }
+  };
+
 })();
