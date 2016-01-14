@@ -1,4 +1,7 @@
 <div>
   <h2>{{SchoolShowViewModel.school.name}}</h2>
   <h3>Dates</h3>
+  <div data-ng-repeat="date in SchoolShowViewModel.school.dates">
+  <p>{{date.date}}</p>
+</div>
 </div>
