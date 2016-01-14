@@ -2,6 +2,7 @@
   <h2>{{SchoolShowViewModel.school.name}}</h2>
   <h3>Dates</h3>
   <div data-ng-repeat="date in SchoolShowViewModel.school.dates">
+    <h5><a data-ui-sref="dateCreate">New Date</a><h5>
   <p>{{date.date}}</p>
 </div>
 </div>

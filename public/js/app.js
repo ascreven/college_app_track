@@ -29,6 +29,12 @@
       controller: 'SchoolShowController',
       controllerAs: 'SchoolShowViewModel'
     })
+    .state('dateCreate', {
+      url: '/school/:id/adddate',
+      templateUrl: 'views/schools/new.html',
+      controller: "DateCreateController",
+      controllerAs: 'DateCreateViewModel'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'views/users/login.html'
