@@ -13,6 +13,11 @@ o.getAll = function(){
     angular.copy(data, o.schools)
   });
 }
+o.create = function(school){
+  return $http.post('/schools', school).success(function(data){
+    o.schools.push(data)
+  })
+}
 return o;
 }])
 
@@ -24,19 +29,21 @@ function($scope, schools){
 
 $scope.addSchool = function(){
   if(!$scope.name || $scope.name === '') { return; }
-  $scope.schools.push({
+  schools.create({
     name: $scope.name,
     link: $scope.link,
-    upvotes: 0,
-    dates: [
-      {author: 'Joe', date: '1/3/13', upvotes: 3, body: "Application due"},
-      {author: 'Mary', date: '1/3/16', upvotes: 2, body: "Registration day"},
-    ]
+    // upvotes: 0,
+    // dates: [
+    //   {author: 'Joe', date: '1/3/13', upvotes: 3, body: "Application due"},
+    //   {author: 'Mary', date: '1/3/16', upvotes: 2, body: "Registration day"},
+    // ]
   });
   $scope.name = '';
   $scope.link = '';
 
 };
+
+
 $scope.incrementUpvotes = function(school) {
   school.upvotes += 1;
 };
