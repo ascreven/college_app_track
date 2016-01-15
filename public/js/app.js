@@ -1,8 +1,16 @@
 var app = angular.module('app_track', []);
 
+app.factory('schools', [function(){
+  var o = {
+  schools: []
+};
+return o;
+}])
+
 app.controller('MainCtrl', [
 '$scope',
-function($scope){
+'schools',
+function($scope, schools){
   $scope.schools = [
     {name: 'post 1', upvotes: 5},
     {name: 'post 2', upvotes: 2},
@@ -12,10 +20,18 @@ function($scope){
 ];
 $scope.addSchool = function(){
   if(!$scope.name || $scope.name === '') { return; }
-  $scope.schools.push({name: $scope.name, upvotes: 0});
+  $scope.schools.push({
+    name: $scope.name,
+    link: $scope.link,
+    upvotes: 0
+  });
   $scope.name = '';
-};
+  $scope.link = '';
 
+};
+$scope.incrementUpvotes = function(school) {
+  school.upvotes += 1;
+};
 }]);
 
 

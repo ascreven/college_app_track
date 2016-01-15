@@ -28,12 +28,20 @@
       <h1>College App Track<small>Keep track of when you're applications are due</small></h1>
     </div>
     <form ng-submit="addSchool()">
-  <input type="text" ng-model="name"></input>
+  <input type="text" placeholder="School Name" ng-model="name"></input>
+    <input type="text" placeholder="Link" ng-model="link"></input>
   <button type="submit">Post</button>
 </form>
     <!-- <button ng-click="addSchool()">Add School</button> -->
     <div ng-repeat="school in schools | orderBy: 'name'">
-        {{school.name}} - upvotes: {{school.upvotes}}
+      <span ng-click="incrementUpvotes(school)">^</span>
+      <a ng-show="school.link" href="{{school.link}}">
+  {{school.name}}
+</a>
+<span ng-hide="school.link">
+    {{school.name}}
+</span>
+         - upvotes: {{school.upvotes}}
     </div>
     <main data-ui-view></main>
   </body>
