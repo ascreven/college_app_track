@@ -5,20 +5,22 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var School = mongoose.model('School');
 var Date = mongoose.model('Date');
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
 // get school page
 router.get('/schools', function(req, res, next) {
+  console.log('in get school router');
   School.find(function(err, schools){
     if(err){ return next(err); }
-
+console.log(schools);
     res.json(schools);
   });
 });
+/* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
+
+
+
 router.param('school', function(req, res, next, id) {
   var query = School.findById(id);
 

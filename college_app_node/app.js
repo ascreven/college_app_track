@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 require('./models/Schools.js');
 require('./models/Dates.js');
-mongoose.connect('mongodb://localhost/colleges');
+mongoose.connect('mongodb://localhost/schools');
 
 var express = require('express');
 var path = require('path');

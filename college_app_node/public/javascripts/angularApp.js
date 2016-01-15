@@ -2,10 +2,17 @@ var app = angular.module('app_track', [
   'ui.router'
 ]);
 
-app.factory('schools', [function(){
+app.factory('schools', ['$http', function( $http ){
   var o = {
   schools: []
+
 };
+console.log(o)
+o.getAll = function(){
+  return $http.get('/schools').success(function(data){
+    angular.copy(data, o.schools)
+  });
+}
 return o;
 }])
 
@@ -60,7 +67,12 @@ function($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/home',
       templateUrl: '/home.html',
-      controller: 'MainCtrl'
+      controller: 'MainCtrl',
+      resolve: {
+        schoolPromise: ['schools', function( schools ){
+          return schools.getAll();
+        }]
+      }
     })
     .state('schools', {
       url: '/schools/{id}',
