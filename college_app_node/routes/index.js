@@ -43,8 +43,12 @@ console.log('in post schools')
   });
 });
 
-router.get('/schools/:school', function(req, res) {
-  res.json(req.school);
+router.get('/schools/:school', function(req, res, next) {
+  req.post.populate('dates', function(err, school){
+    if (err) {return next(err);}
+res.json(school);
+  })
+  // res.json(req.school);
 });
 
 
@@ -53,6 +57,46 @@ router.put('/schools/:school/upvote', function(req, res, next) {
     if (err) { return next(err); }
 
     res.json(school);
+  });
+});
+
+router.post('/schools/:school/dates', function(req, res, next) {
+  var date = new Date(req.body);
+  date.school = req.school;
+
+  date.save(function(err, date){
+    if(err){ return next(err); }
+
+    req.school.dates.push(date);
+    req.school.save(function(err, school) {
+      if(err){ return next(err); }
+
+      res.json(date);
+    });
+  });
+});
+
+router.param('date', function(req, res, next, id) {
+  var query = Date.findById(id);
+
+  query.exec(function (err, date){
+    if (err) { return next(err); }
+    if (!date) { return next(new Error('can\'t find date')); }
+
+    req.date = date;
+    return next();
+  });
+});
+
+router.post('/schools/:school/dates/:date/upvote', function(req, res, next) {
+  var date = new Date(req.body);
+console.log('in post dates')
+  date.save(function(err, date){
+    if(err){
+      console.log(err);
+      return next(err); }
+
+    res.json(date);
   });
 });
 module.exports = router;
