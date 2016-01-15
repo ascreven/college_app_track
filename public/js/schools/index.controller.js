@@ -28,11 +28,11 @@ $scope.addSchool = function(){
 };
 $scope.addDate = function(school) {
   $scope.school = this.school
-  $scope.url = this.school.date
-  console.log($scope.url)
+  $scope.date = this.school.date
+  console.log($scope.date)
   console.log($scope.school)
   $('button').click(function(){
-       $(this).text('xxx');
+       console.log(this)
    })
 };
   }
