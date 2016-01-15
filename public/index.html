@@ -36,13 +36,13 @@
   <form ng-submit="addSchool()">
 <input type="text" placeholder="School Name" ng-model="name"></input>
   <input type="text" placeholder="Link" ng-model="link"></input>
-<button type="submit">school</button>
+<button type="submit">Create School</button>
 </form>
   <!-- <button ng-click="addSchool()">Add School</button> -->
   <div ng-repeat="school in schools | orderBy: 'name'">
     <span ng-click="incrementUpvotes(school)">^</span>
     <span>
-  <a href="#/schools/{{$index}}">Comments</a>
+  <a href="#/schools/{{$index}}">Dates</a>
 </span>
     <a ng-show="school.link" href="{{school.link}}">
 {{school.name}}
@@ -66,14 +66,24 @@
     </h3>
   </div>
 
-  <div ng-repeat="comment in school.comments | orderBy:'-upvotes'">
+  <div ng-repeat="date in school.dates | orderBy:'date'">
     <span class="glyphicon glyphicon-thumbs-up"
-      ng-click="incrementUpvotes(comment)"></span>
-    {{comment.upvotes}} - by {{comment.author}}
+      ng-click="incrementUpvotes(date)"></span>
+    {{date.upvotes}} - by {{date.author}}
     <span style="font-size:20px; margin-left:10px;">
-      {{comment.body}}
+      {{date.body}}
     </span>
   </div>
+  <form ng-submit="addDate()"
+    style="margin-top:30px;">
+    <h3>Add a new date</h3>
+
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Date" ng-model="date"></input>
+      <input type="text" class="form-control" placeholder="Description" ng-model="body"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Post Date</button>
+  </form>
 </script>
     <!-- <main data-ui-view></main> -->
   </body>

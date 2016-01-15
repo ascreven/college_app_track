@@ -22,8 +22,8 @@ $scope.addSchool = function(){
     link: $scope.link,
     upvotes: 0,
     dates: [
-      {author: 'Joe', date: '1/3/13', upvotes: 3},
-      {author: 'Mary', date: '1/3/16', upvotes: 2},
+      {author: 'Joe', date: '1/3/13', upvotes: 3, body: "Application due"},
+      {author: 'Mary', date: '1/3/16', upvotes: 2, body: "Registration day"},
     ]
   });
   $scope.name = '';
@@ -40,6 +40,16 @@ app.controller('SchoolsCtrl', [
 'schools',
 function($scope, $stateParams, schools){
   $scope.school = schools.schools[$stateParams.id];
+  $scope.addDate = function(){
+  if($scope.body === '' || $scope.date === '') { return; }
+  $scope.school.dates.push({
+    body: $scope.body,
+    author: 'user',
+    date: $scope.date,
+    upvotes: 0
+  });
+  $scope.body = '';
+};
 }]);
 app.config([
 '$stateProvider',
