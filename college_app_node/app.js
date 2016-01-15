@@ -1,8 +1,3 @@
-var mongoose = require('mongoose');
-require('./models/Schools.js');
-require('./models/Dates.js');
-mongoose.connect('mongodb://localhost/schools');
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -10,13 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// connect to mongoose
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/schools');
+require('./models/Schools');
+require('./models/Dates');
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-// connect to mongoose
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

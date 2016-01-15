@@ -5,7 +5,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var School = mongoose.model('School');
 var Date = mongoose.model('Date');
-// get school page
+
 router.get('/schools', function(req, res, next) {
   console.log('in get school router');
   School.find(function(err, schools){
@@ -14,11 +14,6 @@ console.log(schools);
     res.json(schools);
   });
 });
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
-
 
 
 router.param('school', function(req, res, next, id) {
