@@ -1,8 +1,13 @@
 <div>
-  <h2>{{SchoolShowViewModel.school.name}}</h2>
+  <h2>{{school.name}}</h2>
   <h3>Dates</h3>
-  <div data-ng-repeat="date in SchoolShowViewModel.school.dates">
-    <h5><a data-ui-sref="dateCreate">New Date</a><h5>
-  <p>{{date.date}}</p>
+  <h5><a data-ui-sref="dateCreate">New Date</a><h5>
+  <!-- <div data-ng-repeat="date in SchoolShowViewModel.school.dates"> -->
+
+  <!-- <p>{{date.date}}</p> -->
+<!-- </div> -->
+  <div data-ng-repeat="date in dates | orderBy: '-upvotes'">
+    {{date}}
 </div>
+<button ng-click="addPost()">Post</button>
 </div>
