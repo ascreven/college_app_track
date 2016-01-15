@@ -20,7 +20,7 @@
 ]
 
 $scope.addSchool = function(){
-  $scope.schools.push({"name":"Florida State University","photo":"https://upload.wikimedia.org/wikipedia/en/thumb/a/a1/Arizona_State_University_seal.svg/1024px-Arizona_State_University_seal.svg.png","url":"http://www.asu.edu/","date": '1/28/2016'});
+  $scope.schools.push({"name": $scope.name ,"photo": $scope.photo,"url": $scope.url,"date": '1/28/2016'});
 };
   }
 })();
