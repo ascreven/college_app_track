@@ -20,7 +20,11 @@
 ]
 
 $scope.addSchool = function(){
+  if(!$scope.name || $scope.name === '' || !$scope.photo || $scope.photo === "" || !$scope.url || $scope.url === '') { return; }
   $scope.schools.push({"name": $scope.name ,"photo": $scope.photo,"url": $scope.url,"date": '1/28/2016'});
+  $scope.name= '';
+  $scope.photo = "";
+  $scope.url = "";
 };
   }
 })();
