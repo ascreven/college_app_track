@@ -1,11 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="app_track">
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Angular</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<!-- <link rel='stylesheet' href='styles.css'> -->
+        <!-- Latest compiled and minified JavaScript -->
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="javascripts/angularApp.js"></script>
+    <!-- <script src="js/appRoutes.js"></script> -->
+    <!-- <script src="js/schools/schools.js"></script> -->
+    <!-- <script src="js/schools/school.factory.js"></script> -->
+    <!-- <script src="js/schools/index.controller.js"></script> -->
+    <!-- <script src="js/schools/show.controller.js"></script> -->
+    <!-- <script src="js/grumbles/grumbles.js"></script> -->
+    <!-- <script src="js/grumbles/index.controller.js"></script> -->
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="page-header">
+      <h1>College App Track<small>Keep track of when you're applications are due</small></h1>
+    </div>
+    <ui-view></ui-view>
+
+    <script type="text/ng-template" id="/home.html">
+  <div class="page-header">
+    <h1>Flapper News</h1>
+  </div>
+  <form ng-submit="addSchool()">
+<input type="text" placeholder="School Name" ng-model="name"></input>
+  <input type="text" placeholder="Link" ng-model="link"></input>
+<button type="submit">Create School</button>
+</form>
+  <!-- <button ng-click="addSchool()">Add School</button> -->
+  <div ng-repeat="school in schools | orderBy: 'name'">
+    <span ng-click="incrementUpvotes(school)">^</span>
+    <span>
+  <a href="#/schools/{{$index}}">Dates</a>
+</span>
+    <a ng-show="school.link" href="{{school.link}}">
+{{school.name}}
+</a>
+<span ng-hide="school.link">
+  {{school.name}}
+</span>
+       - upvotes: {{school.upvotes}}
+  </div>
+
+</script>
+<script type="text/ng-template" id="/schools.html">
+  <div class="page-header">
+    <h3>
+      <a ng-show="school.link" href="{{school.link}}">
+        {{school.title}}
+      </a>
+      <span ng-hide="school.link">
+        {{school.title}}
+      </span>
+    </h3>
+  </div>
+
+  <div ng-repeat="date in school.dates | orderBy:'date'">
+    <span class="glyphicon glyphicon-thumbs-up"
+      ng-click="incrementUpvotes(date)"></span>
+    {{date.upvotes}} - by {{date.author}}
+    <span style="font-size:20px; margin-left:10px;">
+      {{date.body}}
+    </span>
+  </div>
+  <form ng-submit="addDate()"
+    style="margin-top:30px;">
+    <h3>Add a new date</h3>
+
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Date" ng-model="date"></input>
+      <input type="text" class="form-control" placeholder="Description" ng-model="body"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Post Date</button>
+  </form>
+</script>
+    <!-- <main data-ui-view></main> -->
   </body>
 </html>
