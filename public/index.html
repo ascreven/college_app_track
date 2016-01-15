@@ -23,11 +23,18 @@
     <!-- <script src="js/grumbles/grumbles.js"></script> -->
     <!-- <script src="js/grumbles/index.controller.js"></script> -->
   </head>
-  <body>
+  <body ng-controller='MainCtrl'>
     <div class="page-header">
       <h1>College App Track<small>Keep track of when you're applications are due</small></h1>
     </div>
-    <!-- <h1><a data-ui-sref="grumbleIndex">Grumblr</a></h1> -->
+    <form ng-submit="addSchool()">
+  <input type="text" ng-model="name"></input>
+  <button type="submit">Post</button>
+</form>
+    <!-- <button ng-click="addSchool()">Add School</button> -->
+    <div ng-repeat="school in schools | orderBy: 'name'">
+        {{school.name}} - upvotes: {{school.upvotes}}
+    </div>
     <main data-ui-view></main>
   </body>
 </html>
