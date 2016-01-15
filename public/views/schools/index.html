@@ -6,14 +6,22 @@
 <!-- <div class="card-group"> -->
 <!-- <div data-ng-repeat="school in SchoolIndexViewModel.schools | orderBy:'-created_at'"> -->
 <div data-ng-repeat="school in schools | orderBy:'name'">
+
+
   <!-- <p><a data-ui-sref="schoolShow({id: school._id})">{{school.name}}</a></p> -->
+<!-- <div data-ng-repeat="date in school | orderBy:'date'"> -->
+<!-- Date area -->
+
+<!-- </div> -->
   <div class="card center-block col-sm-4">
 
     <div class="card-block">
 <h4 class='card-title'><a data-ui-sref="schoolShow({id: school._id})">{{school.name}}</a></h4>
 <img class="card-img-top center-block" data-ng-src="{{school.photo}}" alt="Card image cap">
+<button  class='{{school.url}}' ng-click="addDate(school)">Add Date</button>
+{{school.date}}
 
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
