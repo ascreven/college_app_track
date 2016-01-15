@@ -23,26 +23,58 @@
     <!-- <script src="js/grumbles/grumbles.js"></script> -->
     <!-- <script src="js/grumbles/index.controller.js"></script> -->
   </head>
-  <body ng-controller='MainCtrl'>
+  <body>
     <div class="page-header">
       <h1>College App Track<small>Keep track of when you're applications are due</small></h1>
     </div>
-    <form ng-submit="addSchool()">
-  <input type="text" placeholder="School Name" ng-model="name"></input>
-    <input type="text" placeholder="Link" ng-model="link"></input>
-  <button type="submit">Post</button>
+    <ui-view></ui-view>
+
+    <script type="text/ng-template" id="/home.html">
+  <div class="page-header">
+    <h1>Flapper News</h1>
+  </div>
+  <form ng-submit="addSchool()">
+<input type="text" placeholder="School Name" ng-model="name"></input>
+  <input type="text" placeholder="Link" ng-model="link"></input>
+<button type="submit">school</button>
 </form>
-    <!-- <button ng-click="addSchool()">Add School</button> -->
-    <div ng-repeat="school in schools | orderBy: 'name'">
-      <span ng-click="incrementUpvotes(school)">^</span>
-      <a ng-show="school.link" href="{{school.link}}">
-  {{school.name}}
+  <!-- <button ng-click="addSchool()">Add School</button> -->
+  <div ng-repeat="school in schools | orderBy: 'name'">
+    <span ng-click="incrementUpvotes(school)">^</span>
+    <span>
+  <a href="#/schools/{{$index}}">Comments</a>
+</span>
+    <a ng-show="school.link" href="{{school.link}}">
+{{school.name}}
 </a>
 <span ng-hide="school.link">
-    {{school.name}}
+  {{school.name}}
 </span>
-         - upvotes: {{school.upvotes}}
-    </div>
-    <main data-ui-view></main>
+       - upvotes: {{school.upvotes}}
+  </div>
+
+</script>
+<script type="text/ng-template" id="/schools.html">
+  <div class="page-header">
+    <h3>
+      <a ng-show="school.link" href="{{school.link}}">
+        {{school.title}}
+      </a>
+      <span ng-hide="school.link">
+        {{school.title}}
+      </span>
+    </h3>
+  </div>
+
+  <div ng-repeat="comment in school.comments | orderBy:'-upvotes'">
+    <span class="glyphicon glyphicon-thumbs-up"
+      ng-click="incrementUpvotes(comment)"></span>
+    {{comment.upvotes}} - by {{comment.author}}
+    <span style="font-size:20px; margin-left:10px;">
+      {{comment.body}}
+    </span>
+  </div>
+</script>
+    <!-- <main data-ui-view></main> -->
   </body>
 </html>
