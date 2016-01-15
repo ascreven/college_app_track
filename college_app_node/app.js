@@ -1,3 +1,8 @@
+var mongoose = require('mongoose');
+require('./models/Schools.js');
+require('./models/Dates.js');
+mongoose.connect('mongodb://localhost/colleges');
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -10,10 +15,7 @@ var users = require('./routes/users');
 
 var app = express();
 // connect to mongoose
-var mongoose = require('mongoose');
-require('./models/Schools');
-require('./models/Dates');
-mongoose.connect('mongodb://localhost/schools');
+
 
 
 // view engine setup

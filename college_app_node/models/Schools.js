@@ -7,4 +7,9 @@ var SchoolSchema = new mongoose.Schema({
   dates: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Date' }]
 });
 
+SchoolSchema.methods.upvote = function(cb) {
+  this.upvotes += 1;
+  this.save(cb);
+};
+
 mongoose.model('School', SchoolSchema);
